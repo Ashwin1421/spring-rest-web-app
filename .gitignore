@@ -4,5 +4,7 @@
 *.iml
 # target folder
 target/*
+
 # properties files not required
+
 *.properties
