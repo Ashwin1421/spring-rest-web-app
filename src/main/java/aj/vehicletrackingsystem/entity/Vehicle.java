@@ -1,4 +1,4 @@
-package com.ashwin.entity;
+package aj.vehicletrackingsystem.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
