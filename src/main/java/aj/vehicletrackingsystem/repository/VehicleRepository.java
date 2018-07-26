@@ -1,6 +1,6 @@
-package com.ashwin.repository;
+package aj.vehicletrackingsystem.repository;
 
-import com.ashwin.entity.Vehicle;
+import aj.vehicletrackingsystem.entity.Vehicle;
 import org.springframework.data.repository.CrudRepository;
 
 public interface VehicleRepository extends CrudRepository<Vehicle, String> {
