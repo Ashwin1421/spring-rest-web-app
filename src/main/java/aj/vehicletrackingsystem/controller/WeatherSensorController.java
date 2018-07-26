@@ -1,7 +1,7 @@
 package aj.vehicletrackingsystem.controller;
 
-import aj.vehicletrackingsystem.entity.Vehicle;
-import aj.vehicletrackingsystem.service.VehicleService;
+import aj.vehicletrackingsystem.entity.WeatherSensor;
+import aj.vehicletrackingsystem.service.WeatherSensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -9,28 +9,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080/vehicles")
-@RequestMapping(value = "/vehicles")
-public class VehicleController {
+@RequestMapping(value = "/weather")
+public class WeatherSensorController {
 
     @Autowired
-    VehicleService vehicleService;
+    WeatherSensorService weatherSensorService;
 
     @RequestMapping(
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public List<Vehicle> findAll(){
-        return vehicleService.findAll();
+    public List<WeatherSensor> findAll(){
+        return weatherSensorService.findAll();
     }
+
 
     @RequestMapping(
             method = RequestMethod.GET,
             value = "/{id}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public Vehicle findById(@PathVariable("id") String id){
-        return vehicleService.findOne(id);
+    public WeatherSensor findById(@PathVariable("id") String id){
+        return weatherSensorService.findById(id);
     }
 
     @RequestMapping(
@@ -38,8 +38,8 @@ public class VehicleController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public Vehicle create(@RequestBody Vehicle newVehicle){
-        return vehicleService.create(newVehicle);
+    public WeatherSensor create(@RequestBody WeatherSensor newWeatherSensor){
+        return weatherSensorService.create(newWeatherSensor);
     }
 
 
@@ -49,16 +49,16 @@ public class VehicleController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public Vehicle update(@PathVariable("id") String id,@RequestBody Vehicle updatedVehicle){
-        return vehicleService.update(id, updatedVehicle);
+    public WeatherSensor update(@PathVariable("id") String id,@RequestBody WeatherSensor updatedWeatherSensor){
+        return weatherSensorService.update(id, updatedWeatherSensor);
     }
-
 
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = "/{id}"
+            value = "/{id}",
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
     public void delete(@PathVariable("id") String id){
-        vehicleService.delete(id);
+        weatherSensorService.delete(id);
     }
 }

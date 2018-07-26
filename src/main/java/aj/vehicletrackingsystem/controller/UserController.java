@@ -1,7 +1,7 @@
 package aj.vehicletrackingsystem.controller;
 
-import aj.vehicletrackingsystem.entity.Vehicle;
-import aj.vehicletrackingsystem.service.VehicleService;
+import aj.vehicletrackingsystem.entity.VehicleUser;
+import aj.vehicletrackingsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -9,19 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080/vehicles")
-@RequestMapping(value = "/vehicles")
-public class VehicleController {
+@RequestMapping(value = "/users")
+public class UserController {
 
     @Autowired
-    VehicleService vehicleService;
+    UserService userService;
 
     @RequestMapping(
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public List<Vehicle> findAll(){
-        return vehicleService.findAll();
+    public List<VehicleUser> findAll(){
+        return userService.findAll();
     }
 
     @RequestMapping(
@@ -29,8 +28,9 @@ public class VehicleController {
             value = "/{id}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public Vehicle findById(@PathVariable("id") String id){
-        return vehicleService.findOne(id);
+    public VehicleUser findById(@PathVariable("id") String id){
+
+        return userService.findById(id);
     }
 
     @RequestMapping(
@@ -38,8 +38,8 @@ public class VehicleController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public Vehicle create(@RequestBody Vehicle newVehicle){
-        return vehicleService.create(newVehicle);
+    public VehicleUser create(@RequestBody VehicleUser newUser){
+        return userService.create(newUser);
     }
 
 
@@ -49,8 +49,8 @@ public class VehicleController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public Vehicle update(@PathVariable("id") String id,@RequestBody Vehicle updatedVehicle){
-        return vehicleService.update(id, updatedVehicle);
+    public VehicleUser update(@PathVariable("id") String id,@RequestBody VehicleUser updatedUser){
+        return userService.update(id, updatedUser);
     }
 
 
@@ -59,6 +59,6 @@ public class VehicleController {
             value = "/{id}"
     )
     public void delete(@PathVariable("id") String id){
-        vehicleService.delete(id);
+        userService.delete(id);
     }
 }
