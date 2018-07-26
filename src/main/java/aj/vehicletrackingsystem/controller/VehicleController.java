@@ -49,7 +49,7 @@ public class VehicleController {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
-    public Vehicle update(@PathVariable("id") String id, Vehicle updatedVehicle){
+    public Vehicle update(@PathVariable("id") String id,@RequestBody Vehicle updatedVehicle){
         return vehicleService.update(id, updatedVehicle);
     }
 
