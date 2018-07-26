@@ -7,4 +7,4 @@ target/*
 
 # properties files not required
 
-*.properties
+./*.properties
