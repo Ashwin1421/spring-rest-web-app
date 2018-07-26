@@ -1,6 +1,6 @@
-package com.ashwin.service;
+package aj.vehicletrackingsystem.service;
 
-import com.ashwin.entity.Vehicle;
+import aj.vehicletrackingsystem.entity.Vehicle;
 
 import java.util.List;
 

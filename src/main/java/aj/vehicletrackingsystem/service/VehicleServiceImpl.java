@@ -1,9 +1,9 @@
-package com.ashwin.service;
+package aj.vehicletrackingsystem.service;
 
-import com.ashwin.entity.Vehicle;
-import com.ashwin.exception.BadRequestException;
-import com.ashwin.exception.ResourceNotFoundException;
-import com.ashwin.repository.VehicleRepository;
+import aj.vehicletrackingsystem.exception.BadRequestException;
+import aj.vehicletrackingsystem.exception.ResourceNotFoundException;
+import aj.vehicletrackingsystem.entity.Vehicle;
+import aj.vehicletrackingsystem.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
