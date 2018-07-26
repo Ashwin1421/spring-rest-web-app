@@ -1,4 +1,4 @@
-package com.ashwin.exception;
+package aj.vehicletrackingsystem.exception;
 
 public class BadRequestException extends RuntimeException{
 

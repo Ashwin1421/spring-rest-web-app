@@ -1,8 +1,5 @@
-package com.ashwin;
+package aj.vehicletrackingsystem;
 
-import com.ashwin.entity.Vehicle;
-import com.ashwin.repository.VehicleRepository;
-import com.ashwin.service.VehicleService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

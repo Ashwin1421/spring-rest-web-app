@@ -1,4 +1,4 @@
-package com.ashwin.exception;
+package aj.vehicletrackingsystem.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
