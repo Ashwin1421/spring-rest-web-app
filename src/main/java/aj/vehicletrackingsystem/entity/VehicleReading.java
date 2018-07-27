@@ -5,14 +5,23 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 public class VehicleReading {
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "vehicle_id", nullable = false)
+    @Id
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String id;
+
+    @ManyToOne(
+            targetEntity = Vehicle.class,
+            fetch = FetchType.LAZY,
+            optional = false)
+    @JoinColumn(
+            name = "vin",
+            nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private String vin;
 
     private float latitude;
@@ -27,6 +36,9 @@ public class VehicleReading {
     private int engineRpm;
     private Tire tires;
 
+    public VehicleReading(){
+        this.id = UUID.randomUUID().toString();
+    }
 
     public Tire getTires() {
         return tires;
@@ -122,5 +134,13 @@ public class VehicleReading {
 
     public void setVin(String vin) {
         this.vin = vin;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
