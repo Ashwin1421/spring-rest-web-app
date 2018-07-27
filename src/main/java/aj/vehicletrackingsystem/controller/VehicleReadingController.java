@@ -5,7 +5,6 @@ import aj.vehicletrackingsystem.service.VehicleReadingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import sun.text.normalizer.VersionInfo;
 
 import java.util.List;
 
@@ -55,7 +54,6 @@ public class VehicleReadingController {
 
     @RequestMapping(
             method = RequestMethod.DELETE,
-            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             value = "/{id}"
     )
     public void delete(@PathVariable("id") String vin){
