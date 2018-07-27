@@ -5,22 +5,25 @@ import aj.vehicletrackingsystem.exception.BadRequestException;
 import aj.vehicletrackingsystem.exception.ResourceNotFoundException;
 import aj.vehicletrackingsystem.repository.VehicleReadingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class VehicleReadingServiceImpl implements VehicleReadingService {
     @Autowired
     VehicleReadingRepository vehicleReadingRepository;
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<VehicleReading> findAll() {
         return (List<VehicleReading>) vehicleReadingRepository.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public VehicleReading findById(String vin) {
         Optional<VehicleReading> existing = vehicleReadingRepository.findById(vin);
         if(!existing.isPresent()){
@@ -30,8 +33,9 @@ public class VehicleReadingServiceImpl implements VehicleReadingService {
     }
 
     @Override
+    @Transactional
     public VehicleReading create(VehicleReading newVehicleReading) {
-        Optional<VehicleReading> existing = vehicleReadingRepository.findById(newVehicleReading.getVin());
+        Optional<VehicleReading> existing = vehicleReadingRepository.findById(newVehicleReading.getId());
         if(existing.isPresent()){
             throw new BadRequestException("Vehicle reading for vin="+existing.get().getVin()+" already exists.");
         }
@@ -39,6 +43,7 @@ public class VehicleReadingServiceImpl implements VehicleReadingService {
     }
 
     @Override
+    @Transactional
     public VehicleReading update(String vin, VehicleReading vehicleReading) {
         Optional<VehicleReading> existing = vehicleReadingRepository.findById(vin);
         if(!existing.isPresent()){
@@ -48,6 +53,7 @@ public class VehicleReadingServiceImpl implements VehicleReadingService {
     }
 
     @Override
+    @Transactional
     public void delete(String vin) {
         Optional<VehicleReading> existing = vehicleReadingRepository.findById(vin);
         if(!existing.isPresent()){
