@@ -1,4 +1,4 @@
-package com.ashwin;
+package aj.vehicletrackingsystem;
 
 import static org.junit.Assert.assertTrue;
 

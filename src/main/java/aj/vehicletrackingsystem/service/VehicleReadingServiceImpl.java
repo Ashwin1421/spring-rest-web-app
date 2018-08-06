@@ -37,7 +37,7 @@ public class VehicleReadingServiceImpl implements VehicleReadingService {
     public VehicleReading create(VehicleReading newVehicleReading) {
         Optional<VehicleReading> existing = vehicleReadingRepository.findById(newVehicleReading.getId());
         if(existing.isPresent()){
-            throw new BadRequestException("Vehicle reading for vin="+existing.get().getVin()+" already exists.");
+            throw new BadRequestException("Vehicle reading for vehicle="+existing.get().getVehicle()+" already exists.");
         }
         return vehicleReadingRepository.save(newVehicleReading);
     }

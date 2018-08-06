@@ -39,6 +39,7 @@ public class VehicleReadingController {
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
     public VehicleReading create(@RequestBody VehicleReading newVehicleReading){
+
         return vehicleReadingService.create(newVehicleReading);
     }
 

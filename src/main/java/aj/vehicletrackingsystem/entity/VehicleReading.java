@@ -1,6 +1,5 @@
 package aj.vehicletrackingsystem.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -19,10 +18,11 @@ public class VehicleReading {
             fetch = FetchType.LAZY,
             optional = false)
     @JoinColumn(
-            name = "vin",
+            name = "vehicle_vin",
+            referencedColumnName = "vin",
             nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private String vin;
+    private Vehicle vehicle;
 
     private float latitude;
     private float longitude;
@@ -128,13 +128,6 @@ public class VehicleReading {
         this.latitude = latitude;
     }
 
-    public String getVin() {
-        return vin;
-    }
-
-    public void setVin(String vin) {
-        this.vin = vin;
-    }
 
     public String getId() {
         return id;
@@ -142,5 +135,14 @@ public class VehicleReading {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }
